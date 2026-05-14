@@ -1,12 +1,13 @@
 import { Router } from 'express';
+import { verifyToken } from '../middlewares/auth.middleware.js';
 import { getDetalles, getDetalleById, createDetalle, updateDetalle, deleteDetalle } from '../controllers/detalle_pedido.controller.js';
 
 const router = Router();
 
-router.get('/', getDetalles);
-router.get('/:id', getDetalleById);
-router.post('/', createDetalle);
-router.put('/:id', updateDetalle);
-router.delete('/:id', deleteDetalle);
+router.get('/', verifyToken, getDetalles);
+router.get('/:id', verifyToken, getDetalleById);
+router.post('/', verifyToken, createDetalle);
+router.put('/:id', verifyToken, updateDetalle);
+router.delete('/:id', verifyToken, deleteDetalle);
 
 export default router;

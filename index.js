@@ -9,6 +9,7 @@ import pedidoRoutes from './routes/pedido.routes.js';
 import detallePedidoRoutes from './routes/detalle_pedido.routes.js';
 import inventarioRoutes from './routes/inventario.routes.js';
 import reporteVentasRoutes from './routes/reporte_ventas.routes.js';
+import authRoutes from './routes/auth.routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ app.use(cors());
 app.use(express.json());
 
 // Rutas de la API
+app.use('/api/auth', authRoutes);
 app.use('/api/productos', productoRoutes);
 app.use('/api/sedes', sedeRoutes);
 app.use('/api/usuarios', usuarioRoutes);
